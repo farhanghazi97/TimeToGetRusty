@@ -27,7 +27,7 @@ fn main() {
 
     // This is valid in accordance with Rust's ownership principles.
     // "new_allocated_s" is now the new and only owner of the string
-    // (and it associated metadata)
+    // (and it's associated metadata)
     println!("{new_allocated_s}");
 
     // ---------- EXAMPLE 2 ----------
@@ -35,8 +35,9 @@ fn main() {
     let new_string = String::from("Hello");
     takes_ownership(new_string);
 
-    // The println!() call below is invalid - value was MOVED
-    // since it is an allocated String!
+    // The println!() call below is invalid
+    // -- data comes from heap
+    // -- data was MOVED into takes_ownership() function
     // println!("{new_string}");
 
     let number = 10;

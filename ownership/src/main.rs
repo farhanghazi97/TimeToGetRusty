@@ -13,7 +13,7 @@ fn main() {
 
     // Over here, we are assigning `allocated_s` to a new variable.
     // In the underlying memory, we do a shallow copy of the data
-    // (that is, we copy metadata pertaining to the variable only such
+    // (that is, we only copy metadata pertaining to the variable such
     // as the pointer, length and capacity, NOT the content thats on
     // the heap i.e the actual string)
 
@@ -44,6 +44,7 @@ fn main() {
     makes_copy(number);
 
     // This is valid - value was COPIED since its an integer!
+    // Copying primitive types don't result in a performance hit
     println!("{number}");
 
     // ---------- EXAMPLE 3 ----------

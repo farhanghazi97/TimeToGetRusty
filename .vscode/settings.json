@@ -6,6 +6,7 @@
         "./loops/Cargo.toml",
         "./variables/Cargo.toml",
         "./_structs/structs/Cargo.toml",
+        "./_structs/rectangles/Cargo.toml",
         "./_ownership/ownership/Cargo.toml",
         "./_ownership/references/Cargo.toml",
         "./_ownership/slices/Cargo.toml",

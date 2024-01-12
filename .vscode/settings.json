@@ -1,0 +1,13 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "./branches/Cargo.toml",
+        "./functions/Cargo.toml",
+        "./guessing_game/Cargo.toml",
+        "./loops/Cargo.toml",
+        "./variables/Cargo.toml",
+        "./_structs/structs/Cargo.toml",
+        "./_ownership/ownership/Cargo.toml",
+        "./_ownership/references/Cargo.toml",
+        "./_ownership/slices/Cargo.toml",
+    ]
+}

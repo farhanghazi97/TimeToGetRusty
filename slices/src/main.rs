@@ -39,7 +39,7 @@ fn main() {
     println!("{hello1} {world1}");
     println!("{hello2} {world2}");
 
-    // Using our new understanding of slices, let optimize our
+    // Using our new understanding of slices, let's optimize our
     // first_word() function!
     let first_word_optimized = first_word_optimized(&s2);
 
@@ -79,8 +79,12 @@ fn first_word_optimized(s: &String) -> &str {
     let bytes = s.as_bytes();
     for (i, &char) in bytes.iter().enumerate() {
         if char == b' ' {
+            // We are returning a string "slice" here -- a reference
+            // to a segment of the string (instead of the entire string)
             return &s[0..i];
         }
     }
+    // If there are no spaces i.e the entire string is the first word,
+    // we simply return a reference to the whole string!
     &s[..]
 }

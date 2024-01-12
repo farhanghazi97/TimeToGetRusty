@@ -19,8 +19,8 @@ fn main() {
     // contents of a "rectangle" instance. Let's do that
     // right now. But as you can see, we've commented it
     // out because - you guessed it - you'll get an error
-    // if you try printing it. Go ahead and uncomment line
-    // 23
+    // if you try printing it. Go ahead and uncomment line 24
+
     // println!("{rect1}");
 
     // Hover over the above error after uncommenting it, we
@@ -49,6 +49,6 @@ fn main() {
     // Now let's try printing the rectangle instance
     println!("rect1 is: {:?}", rect1);
     // We can even pretty-print its content by adding a
-    // modifier to the above format string
+    // modifier (#) to the above format string
     println!("rect1 is: {:#?}", rect1);
 }

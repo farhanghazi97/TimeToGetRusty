@@ -1,5 +1,5 @@
 // Rust does not have a notion of "null" - instead it
-// enforces the handling of a empty value using the handy
+// enforces the handling of a null value using the handy
 // "Option" type from the standard library.
 
 // "match" statements are exhaustive - try removing either
@@ -9,6 +9,7 @@
 // This entire ideology and enforcement by the compiler
 // avoids the whole issue of "assuming we have a value
 // when we might actually have null"
+
 fn plus_one(x: Option<i32>) -> Option<i32> {
     match x {
         None => None,

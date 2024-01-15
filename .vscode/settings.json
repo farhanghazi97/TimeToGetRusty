@@ -11,5 +11,7 @@
         "./_ownership/ownership/Cargo.toml",
         "./_ownership/references/Cargo.toml",
         "./_ownership/slices/Cargo.toml",
+        "./_enums/enums/Cargo.toml",
+        "./_enums/option/Cargo.toml",
     ]
 }

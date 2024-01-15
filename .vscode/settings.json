@@ -14,5 +14,7 @@
         "./_enums/enums/Cargo.toml",
         "./_enums/option/Cargo.toml",
         "./_enums/if_let/Cargo.toml",
+        "./modules/backyard/Cargo.toml",
+        "./modules/restaurant/Cargo.toml",
     ]
 }

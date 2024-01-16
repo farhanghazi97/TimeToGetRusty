@@ -17,5 +17,6 @@
         "./modules/backyard/Cargo.toml",
         "./modules/restaurant/Cargo.toml",
         "./modules/restaurant_updated/Cargo.toml",
+        "./collections/vectors/Cargo.toml",
     ]
 }

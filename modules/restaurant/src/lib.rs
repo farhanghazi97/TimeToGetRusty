@@ -61,6 +61,34 @@ pub fn eat_at_restaurant() {
 
     let mut map = HashMap::new();
     map.insert(1, 2);
+
+    // The execption to this idiom is when we bring in two items
+    // with the same name into scope with "use" statements.
+    // Rust does not allow this. To rectify this, we can differentiate
+    // the items via their parent module.
+
+    use std::fmt;
+    use std::io;
+
+    fn function1() -> fmt::Result {
+        // --snip--
+    }
+    fn function2() -> io::Result<()> {
+        //  --snip--
+    }
+
+    // Another solution is to bring in the two items with an
+    // alias using the "as" keyword:
+
+    use std::fmt::Result;
+    use std::io::Result as IoResult;
+
+    fn function3() -> Result {
+        // --snip --
+    }
+    fn function4() -> IoResult<()> {
+        // --snip --
+    }
 }
 
 // We can also use "pub" to designate "structs" and "enums" as public,
@@ -101,6 +129,27 @@ mod back_of_house {
     }
 }
 
+// RE-EXPORTING NAMES WITH "pub use"
+
+// When we bring a name into scope using the "use" keyword, the name
+// available in the new scope is PRIVATE. To enable the code that calls
+// our code to refer to that name as if it had been defined in that
+// code's scope, we can combine "pub" with "use". This technique is
+// called "re-exporting" because we're bringing an item into scope but
+// also making that item available for others to bring into their scope.
+pub use crate::back_of_house::Appetizer;
+
+// Short-hand for imports
+
+// As you can see, importing multiple items from the same crate
+// or module can result in a lot of vertical space in our files.
+use std::fmt::DebugList;
+use std::fmt::DebugMap;
+
+// To minimise this, we can use nested paths to bring the same
+// items into scope using only one line.
+use std::fmt::{DebugList, DebugMap};
+
 fn main() {
     // Let's now try constructing an instance of a "Breakfast"
     let meal_incomplete = back_of_house::Breakfast {
@@ -116,5 +165,6 @@ fn main() {
     // compiler is happy here.
     let mut meal_complete = back_of_house::Breakfast::summer("Rye");
     let side_meal = back_of_house::Appetizer::Soup(String::from("Chicken Corn Soup"));
+    // Since meal_complete is mutable, we can update its attributes like so:
     meal_complete.toast = String::from("wheat");
 }

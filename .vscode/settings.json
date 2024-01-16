@@ -16,5 +16,6 @@
         "./_enums/if_let/Cargo.toml",
         "./modules/backyard/Cargo.toml",
         "./modules/restaurant/Cargo.toml",
+        "./modules/restaurant_updated/Cargo.toml",
     ]
 }

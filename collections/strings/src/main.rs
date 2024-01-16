@@ -82,7 +82,6 @@ fn main() {
     // concatenating multiple strings. Thankfully, we have a
     // Rust macro! to our rescue! For complicated string combining,
     // we can instead use the "format!" macro. Let's take a look:
-
     let s8 = format!("{s7}-{s6}");
     println!("{s8}");
 
@@ -90,4 +89,13 @@ fn main() {
     // printing output to the screen, it returns a "String" with
     // specified contents. Plus, the format! macro uses references
     // so it dosen't take ownership of any of its parameters!
+
+    // Try uncommenting line 100 - you're in for a surprise!
+
+    // ALERT: Unlike almost every other language, Rust DOES NOT
+    // allow indexing into a string!!! BA DUM TSS! Why?
+    // There's a fair bit to explain so best bet is to read
+    // through here: https://doc.rust-lang.org/book/ch08-02-strings.html
+
+    // let character = s7[0];
 }

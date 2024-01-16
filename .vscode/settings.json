@@ -18,5 +18,6 @@
         "./modules/restaurant/Cargo.toml",
         "./modules/restaurant_updated/Cargo.toml",
         "./collections/vectors/Cargo.toml",
+        "./collections/strings/Cargo.toml",
     ]
 }

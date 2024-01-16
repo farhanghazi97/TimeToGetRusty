@@ -92,7 +92,6 @@ fn main() {
     // elements of different types, we can use an enum!
 
     // Let's take a closer look.
-
     #[derive(Debug)]
     enum SpreadsheetCell {
         Int(i32),
@@ -100,6 +99,8 @@ fn main() {
         Text(String),
     }
 
+    // This is OK since the vector comprises of 3 elements - all
+    // of which are of type <SpreadsheetCell>!
     let row = vec![
         SpreadsheetCell::Int(3),
         SpreadsheetCell::Float(10.12),

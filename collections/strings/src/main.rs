@@ -21,7 +21,7 @@ fn main() {
 
     let mut s1 = String::new();
     let mut s2 = "".to_string();
-    let mut s3 = "Welcome to Rust.";
+    let s3 = "Welcome to Rust.";
 
     s1.push_str("Hello, world!");
     s2.push_str("Hello, world!");
@@ -45,4 +45,49 @@ fn main() {
     println!("{s2}");
     println!("{s3}");
     println!("{s4}");
+
+    // String concatenation using + Operator
+    let s5 = String::from("Hello");
+    let s6 = String::from(", World!");
+
+    // Let's dissect the line 69!
+    // Firstly, let's think about what types we are adding.
+    // Looking at the types of each individual component, we
+    // see that:
+    //    s5 has type: String:
+    //    s6 has type: &String:
+    //    the + operator accepts an argument of type &str:
+    //      this explains why we are adding &s6 and not just s6. But wait!
+    //      s6 has type &String and not &str. Why isn't the compiler
+    //      angry?! This is because in this case Rust knows what we're
+    //      trying to do and peforms "deref coercion" (we'll explore this
+    //      in depth later). Essentially, it coerces &String to &str!
+
+    //      Also, note that the use of &s6 ensures that we are not taking
+    //      ownership of the variable, making it accessible later in our program!
+
+    // HOWEVER, there is one error! Try uncommenting line 79!
+    // You'll notice the compiler is complaining...
+
+    // This is expected because using the + operator results in
+    // the add() string method taking ownership of s5 (LHS)
+    // s5 has moved into s7 and so therefore is no longer valid!
+
+    let s7 = s5 + &s6;
+    println!("{s7}");
+    println!("{s6}");
+    // println!("{s5}");
+
+    // As you can imagine, this can be quite a drag if we are
+    // concatenating multiple strings. Thankfully, we have a
+    // Rust macro! to our rescue! For complicated string combining,
+    // we can instead use the "format!" macro. Let's take a look:
+
+    let s8 = format!("{s7}-{s6}");
+    println!("{s8}");
+
+    // The format!() macro works like println!(), but instead of
+    // printing output to the screen, it returns a "String" with
+    // specified contents. Plus, the format! macro uses references
+    // so it dosen't take ownership of any of its parameters!
 }

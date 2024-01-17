@@ -20,5 +20,6 @@
         "./collections/vectors/Cargo.toml",
         "./collections/strings/Cargo.toml",
         "./collections/hashmap/Cargo.toml",
+        "./error_handling/Cargo.toml",
     ]
 }

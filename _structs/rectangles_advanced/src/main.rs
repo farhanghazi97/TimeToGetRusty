@@ -25,6 +25,8 @@ impl Rectangle {
     // The "functions" below are better called "methods"
     // since they act upon an instance of a Rectangle
 
+    // Methods must take &self as their first parameter
+
     fn area(&self) -> u32 {
         self.width * self.height
     }
@@ -47,6 +49,11 @@ impl Rectangle {
 
     // Associated functions are often used for constructors
     // that will return a new instance of the struct.
+
+    // Associated functions are invoked directly via the type itself
+    // (and not an instance of the type).
+
+    // Associated functions DO NOT take &self as their first parameter!
 
     // THe "Self" keyword in the return type and in the body
     // of the function are aliases for the type that appears

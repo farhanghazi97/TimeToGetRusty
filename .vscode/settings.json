@@ -24,5 +24,6 @@
         "./error_handling/error_recovery/Cargo.toml",
         "./error_handling/error_propagation/Cargo.toml",
         "./generics/functions/Cargo.toml",
+        "./generics/structs/Cargo.toml",
     ]
 }

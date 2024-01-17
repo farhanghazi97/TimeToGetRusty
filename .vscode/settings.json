@@ -22,5 +22,6 @@
         "./collections/hashmap/Cargo.toml",
         "./error_handling/panic/Cargo.toml",
         "./error_handling/error_recovery/Cargo.toml",
+        "./error_handling/error_propagation/Cargo.toml",
     ]
 }

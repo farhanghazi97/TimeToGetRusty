@@ -43,20 +43,20 @@ fn main() {
     // let does_not_exist = &v4[100];
     // let does_not_exist = v4.get(100);
 
-    // Line 38 (using indexing) causes the program to panic because it
+    // Line 43 (using indexing) causes the program to panic because it
     // references a non-existant element. This method is best used when
     // you want your program to crash if there's an attempt to access
     // an element past the end of the vector
 
-    // Line 39 (using get() method) returns None without panicking.
+    // Line 44 (using get() method) returns None without panicking.
     // This method is best used if accessing an element beyond the range
     // of the vector may happen occasionally under normal circumstances.
-    // By return a Some(&element) we are ensuring type-safety by handling
+    // By returning a Some(&element) we are ensuring type-safety by handling
     // both null and non-null values.
 
     // Rust's borrow checker enforces ownership and borrowing rules
     // here too (since we're working with references).
-    // Let's test it out
+    // Let's test it out!
 
     let mut v5 = vec![1, 2, 3];
     // Here we grab an IMMUTABLE REFERENCE to the first item in the vector

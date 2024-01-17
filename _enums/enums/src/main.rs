@@ -32,8 +32,8 @@ fn value_in_cents(coin: Coin) -> u8 {
 }
 
 fn main() {
-    let home = IpAddrKind::V4(127, 0, 0, 1);
-    let loopback = IpAddrKind::V6(String::from("::1"));
+    let _home = IpAddrKind::V4(127, 0, 0, 1);
+    let _loopback = IpAddrKind::V6(String::from("::1"));
 
     let penny = value_in_cents(Coin::Penny);
     let dime = value_in_cents(Coin::Dime);

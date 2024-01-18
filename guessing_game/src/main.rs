@@ -1,7 +1,7 @@
 use rand::Rng;
-// use std::cmp::Ordering;
-use std::io;
+use std::{cmp::Ordering, io};
 
+#[derive(Debug)]
 pub struct Guess {
     value: i32,
 }
@@ -15,6 +15,40 @@ impl Guess {
     }
     pub fn value(&self) -> i32 {
         self.value
+    }
+}
+
+impl std::cmp::Ord for Guess {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        if self.value < other.value {
+            Ordering::Less
+        } else if self.value > other.value {
+            Ordering::Greater
+        } else {
+            Ordering::Equal
+        }
+    }
+}
+
+impl std::cmp::PartialOrd for Guess {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        if self.value < other.value {
+            Some(Ordering::Less)
+        } else if self.value > other.value {
+            Some(Ordering::Greater)
+        } else {
+            Some(Ordering::Equal)
+        }
+    }
+}
+
+impl std::cmp::Eq for Guess {
+    fn assert_receiver_is_total_eq(&self) {}
+}
+
+impl std::cmp::PartialEq for Guess {
+    fn eq(&self, other: &Self) -> bool {
+        self.value == other.value
     }
 }
 
@@ -44,13 +78,17 @@ fn main() {
         // instances of a Guess...
         // We will fix this later...with TRAITS!
 
-        // match guess.cmp(&secret_number) {
-        //     Ordering::Less => println!("Too small!"),
-        //     Ordering::Greater => println!("Too big!"),
-        //     Ordering::Equal => {
-        //         println!("You win!");
-        //         break;
-        //     }
-        // }
+        // 19th Jan - Have a look at the updated implementation
+        // where we can defined how to compare instances of Guess
+        // We have implemented the relevant traits on the type.
+
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            }
+        }
     }
 }

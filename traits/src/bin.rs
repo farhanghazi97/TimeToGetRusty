@@ -1,4 +1,4 @@
-use cool_lib::{Area, NewsArticle, Rectangle, Summary, Triangle, Tweet};
+use cool_lib::{NewsArticle, Rectangle, ShapeOperation, Summary, Triangle, Tweet};
 
 pub fn main() {
     let article = NewsArticle {

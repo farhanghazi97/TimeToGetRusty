@@ -73,6 +73,10 @@ impl Summary for Tweet {
 // methods in a trait and then opt-in to override each trait
 // method
 
+// To provide a  default implementation for a trait method,
+// provide a concrete implementation within the trait method
+// body.
+
 // Let's have a look at how this can be achieved.
 pub struct Rectangle {
     pub width: f64,
@@ -84,7 +88,9 @@ pub struct Triangle {
     pub height: f64,
 }
 
-pub trait Area {
+pub trait ShapeOperation {
+    // No default - compiler will enforce any types that implement this trait
+    // to provide its custom implementation for area() method
     fn area(&self) -> f64;
     // Default implementation for this trait method
     fn dimensions(&self) -> String {
@@ -92,7 +98,7 @@ pub trait Area {
     }
 }
 
-impl Area for Rectangle {
+impl ShapeOperation for Rectangle {
     fn area(&self) -> f64 {
         self.width * self.height
     }
@@ -100,7 +106,7 @@ impl Area for Rectangle {
     // default implementation provided by the trait method
 }
 
-impl Area for Triangle {
+impl ShapeOperation for Triangle {
     fn area(&self) -> f64 {
         0.50 * self.base * self.height
     }

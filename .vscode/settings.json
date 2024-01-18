@@ -27,5 +27,6 @@
         "./generics/structs/Cargo.toml",
         "./generics/enums/Cargo.toml",
         "./generics/advanced/Cargo.toml",
+        "./traits/Cargo.toml",
     ]
 }

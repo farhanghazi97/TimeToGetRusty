@@ -26,33 +26,45 @@
 // code duplication by using generic types instead!
 
 // Let's create our own examples
-use std::io::Bytes;
-
-enum FileType {
-    PDF,
+#[derive(Debug)]
+enum MSDocType {
     DOC,
     DOCX,
+    XLSX,
+}
+
+#[derive(Debug)]
+enum FileTypes {
+    Microsoft(MSDocType),
+    PDF,
 }
 
 struct File<T> {
-    file_type: FileType,
+    file_type: FileTypes,
     size: u32,
     data: T,
 }
 
 impl<T> File<T> {
     fn get_content_type(&self) -> &str {
-        match self.file_type {
-            FileType::DOC => "application/msword",
-            FileType::DOCX => {
-                "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-            }
-            FileType::PDF => "application/pdf",
+        match &self.file_type {
+            FileTypes::Microsoft(file_type) => match file_type {
+                MSDocType::DOC => "application/msword",
+                MSDocType::DOCX => {
+                    "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                }
+                MSDocType::XLSX => {
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                }
+            },
+            FileTypes::PDF => "application/pdf",
         }
     }
 }
 
-// Constrain methods  to specific generic types
+// Constrain methods to specific generic types
+// By specifying the explicit type, we can make certain
+// methods only available for those types!
 
 // These methods are only available on file instances
 // which have string data!
@@ -71,25 +83,28 @@ impl File<&[u8]> {
 }
 
 fn main() {
-    let file_1 = File {
-        file_type: FileType::DOC,
-        size: 32,
-        data: "abc",
-    };
-
-    let file_2 = File {
-        file_type: FileType::PDF,
-        size: 64,
-        data: "hello world".as_bytes(),
-    };
-
-    let content_type_1 = file_1.get_content_type();
-    println!("The content type of file 1 is: {content_type_1}");
-    let data_1 = file_1.get_string_data();
-    println!("The data within file 1 is: {data_1}");
-
-    let content_type_2 = file_2.get_content_type();
-    println!("The content type of file 2 is: {content_type_2}");
-    let data_2 = file_2.get_bytes_data();
-    println!("The data within file 2 is: {:?}", data_2);
+    let files = vec![
+        File {
+            file_type: FileTypes::Microsoft(MSDocType::DOC),
+            data: "",
+            size: 200,
+        },
+        File {
+            file_type: FileTypes::Microsoft(MSDocType::DOCX),
+            data: "",
+            size: 680,
+        },
+        File {
+            file_type: FileTypes::PDF,
+            data: "",
+            size: 1024,
+        },
+    ];
+    for file in &files {
+        let content_type = file.get_content_type();
+        println!(
+            "The content type for {:?} is {content_type}",
+            file.file_type
+        );
+    }
 }

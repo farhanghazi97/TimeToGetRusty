@@ -25,5 +25,6 @@
         "./error_handling/error_propagation/Cargo.toml",
         "./generics/functions/Cargo.toml",
         "./generics/structs/Cargo.toml",
+        "./generics/enums/Cargo.toml",
     ]
 }

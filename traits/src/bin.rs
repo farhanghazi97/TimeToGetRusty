@@ -1,4 +1,4 @@
-use cool_lib::{NewsArticle, Rectangle, ShapeOperation, Summary, Triangle, Tweet};
+use cool_lib::{get_shape_area, NewsArticle, Rectangle, ShapeOperation, Summary, Triangle, Tweet};
 
 pub fn main() {
     let article = NewsArticle {
@@ -30,4 +30,9 @@ pub fn main() {
     };
     println!("The area of the triangle is: {}", triangle.area());
     println!("{}", triangle.dimensions());
+    println!(
+        "The area of this shape is: {:?}",
+        get_shape_area(&rectangle)
+    );
+    println!("The area of this shape is: {:?}", get_shape_area(&triangle));
 }

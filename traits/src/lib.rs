@@ -13,6 +13,8 @@
 // to define a set of behaviours necessary to accomplish
 // some purpose.
 
+use std::fmt::Display;
+
 pub trait Summary {
     fn summarize(&self) -> String;
     // A trait can have multiple methods in its body; the method
@@ -116,3 +118,83 @@ impl ShapeOperation for Triangle {
         format!("Triangle | (Base: {}, Height: {})", self.base, self.height)
     }
 }
+
+// TRAITS AS PARAMETERS
+
+// We can also use traits to define functions that accept many different types.
+// The parameter type in the function below essentially says that this function
+// accepts any type that implements the "ShapeOperation" trait.
+
+// Instead of a concrete type for the "item" parameter, we specify the "impl"
+// keyword and the trait name.
+
+// Hence, this method will accept our "Rectangle" and "Triangle" types above
+// (both of whom are implementors of ShapeOperation)!
+pub fn get_shape_area(item: &impl ShapeOperation) -> f64 {
+    item.area()
+}
+
+// TRAIT BOUND SYNTAX
+
+// The above trait parameter type (i.e &impl ShapeOperation)
+// is actually syntactic sugar for the following:
+
+pub fn get_shape_area<T: ShapeOperation>(item: &T) {}
+
+// There are certain nuances with regards to the use of trait's
+// as parameters that we need to keep in mind. Let's discuss them
+// below:
+
+// In the above function, T can be of any type so long as it
+// implements the "ShapeOperation" trait. What if we had more than
+// one parameter? Sounds simple enough, let's update our function
+// definition (using the shorthand syntax):
+
+pub fn get_shape_area(item1: &impl ShapeOperation, item2: &impl ShapeOperation) {}
+
+// That does it! Our "get_shape_area()" function now accepts
+// two parameters of ANY type so long as they both implement
+// the ShapeOperation trait.
+
+// So, now we could call the function in the following ways:
+
+pub fn get_shape_area(triangle, rectangle);  // (A)
+pub fn get_shape_area(rectangle, rectangle); // (B)
+pub fn get_shape_area(triangle, triangle);   // (C)
+pub fn get_shape_area(rectangle, triangle);  // (D)
+
+// As you can see our scope of types is very wide here.
+// What if we wanted to constrain the call to the SAME TYPE
+// for both parameters (B, C)?
+
+// This is where our syntactic sugar hits it's limitation.
+// To accomodate the above, we'll need to explicitly make use of
+// the trait bound syntax. Let's update our function definition
+// to see how we can accomodate this:
+
+pub fn get_shape_area<T: ShapeOperation>(item1: &T, item2: &T) {}
+
+// Ta-da! The GENERIC TYPE "T" specified as the type of "item1" and
+// "item2" parameters constrains the function such that the CONCRETE
+// TYPE of the value passed as an argument for item1 and item2
+// MUST BE THE SAME TYPE! Sick!
+
+// HERE'S ANOTHER REALLY COOL THING YOU CAN DO
+
+// We can also conditionally implement a trait for any type
+// that implements another trait! Here's an example to help 
+// explain
+
+// Snippet from the standard library...
+impl <T: Display> ToString for T {
+    fn to_string(&self) -> String {}
+}
+
+// The above is what is called a "blanket implementation",
+// that is, we can call the "to_string()" method defined by
+// the "ToString" trait on any type that implements the 
+// "Display" trait!
+
+// Integers implement the "Display" trait, thus why, we can
+// call "to_string()" on it!
+println!(3.to_string());

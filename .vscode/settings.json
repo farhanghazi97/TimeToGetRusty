@@ -28,5 +28,7 @@
         "./generics/enums/Cargo.toml",
         "./generics/advanced/Cargo.toml",
         "./traits/Cargo.toml",
+        "./lifetimes/intro/Cargo.toml",
+        "./lifetimes/functions/Cargo.toml",
     ]
 }

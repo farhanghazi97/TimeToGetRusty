@@ -113,6 +113,7 @@ fn main() {
     }
 }
 
+// Unit tests in Rust go in the same file as the code
 #[cfg(test)]
 mod tests {
     use super::*;

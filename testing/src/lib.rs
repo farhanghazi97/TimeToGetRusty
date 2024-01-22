@@ -1,5 +1,5 @@
 #[derive(Debug)]
-struct Rectangle {
+pub struct Rectangle {
     width: u32,
     height: u32,
 }
@@ -18,6 +18,13 @@ pub fn greeting(name: &str) -> String {
     format!("Hello {}!", name)
 }
 
+// The #[cfg(test)] annotation on the tests module tells
+// Rust to compile and run the test code only when you run
+// "cargo test", not when you run "cargo build"
+
+// This not only saves compile time but also saves space
+// in the resulting compiled binary because the tests are
+// not included.
 #[cfg(test)]
 mod tests {
     use super::*;

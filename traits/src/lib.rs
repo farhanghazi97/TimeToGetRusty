@@ -75,7 +75,7 @@ impl Summary for Tweet {
 // methods in a trait and then opt-in to override each trait
 // method
 
-// To provide a  default implementation for a trait method,
+// To provide a default implementation for a trait method,
 // provide a concrete implementation within the trait method
 // body.
 
@@ -125,7 +125,7 @@ impl ShapeOperation for Triangle {
 // The parameter type in the function below essentially says that this function
 // accepts any type that implements the "ShapeOperation" trait.
 
-// Instead of a concrete type for the "item" parameter, we specify the "impl"
+// Instead of a concrete type for the "item" parameter, we specify "&impl"
 // keyword and the trait name.
 
 // Hence, this method will accept our "Rectangle" and "Triangle" types above
@@ -141,7 +141,7 @@ pub fn get_shape_area(item: &impl ShapeOperation) -> f64 {
 
 pub fn get_shape_area<T: ShapeOperation>(item: &T) {}
 
-// There are certain nuances with regards to the use of trait's
+// There are certain nuances with regards to the use of traits
 // as parameters that we need to keep in mind. Let's discuss them
 // below:
 
@@ -174,7 +174,7 @@ pub fn get_shape_area(rectangle, triangle);  // (D)
 
 pub fn get_shape_area<T: ShapeOperation>(item1: &T, item2: &T) {}
 
-// Ta-da! The GENERIC TYPE "T" specified as the type of "item1" and
+// Ta-da! The GENERIC TYPE "T" specified as the type for "item1" and
 // "item2" parameters constrains the function such that the CONCRETE
 // TYPE of the value passed as an argument for item1 and item2
 // MUST BE THE SAME TYPE! Sick!

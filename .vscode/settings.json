@@ -31,5 +31,6 @@
         "./lifetimes/intro/Cargo.toml",
         "./lifetimes/functions/Cargo.toml",
         "./lifetimes/structs/Cargo.toml",
+        "./testing/Cargo.toml",
     ]
 }

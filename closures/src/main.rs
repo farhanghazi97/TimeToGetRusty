@@ -26,7 +26,8 @@ impl Inventory {
 
     // Calling the "unwrap_or_else() method on "user_preference" i.e calling
     // "unwrap_or_else()" on Option<T> takes one argument which is a closure
-    // with no arguments that returns a value T (in this case, ShirtColor)
+    // with no arguments that returns a value T (in this case, ShirtColor
+    // returned by self.most_stocked())
 
     // If the Option<T> is the Some variant, "unwrap_or_else()" calls the
     // closure and returns the value T from within the Some. If Option<T>

@@ -33,5 +33,6 @@
         "./lifetimes/structs/Cargo.toml",
         "./testing/Cargo.toml",
         "./checkpoint1/minigrep/Cargo.toml",
+        "./closures/Cargo.toml",
     ]
 }

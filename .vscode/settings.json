@@ -36,6 +36,8 @@
         "./closures/intro/Cargo.toml",
         "./closures/ownership/Cargo.toml",
         "./iterators/intro/Cargo.toml",
-        "./iterators/usage/Cargo.toml"
+        "./iterators/usage/Cargo.toml",
+        "./cargo/documentation/Cargo.toml",
+        "./cargo/export_api/Cargo.toml",
     ]
 }

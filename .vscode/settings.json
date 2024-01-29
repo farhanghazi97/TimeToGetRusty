@@ -39,5 +39,6 @@
         "./iterators/usage/Cargo.toml",
         "./cargo/documentation/Cargo.toml",
         "./cargo/export_api/Cargo.toml",
+        "./cargo/workspaces/Cargo.toml",
     ]
 }

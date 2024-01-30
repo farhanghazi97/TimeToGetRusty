@@ -1,8 +1,32 @@
+# A workspace is a set of packages that share the same
+# Cargo.lock and output directory. A workspace can consist
+# of multiple libraries and a single binary.
+
+# The binary, which provides the main functionality, depends
+# on the libraries.
+
+# For this example:
+
+# The workspace root is this "workspaces" directory
+# and is marked by setting a [resolver] section in the 
+# Cargo.toml file
+
+# This workspace consists of 3 "crates" which are the 
+# top-level packages:
+
+# adder - binary
+# add_one - library
+# add_two - library
+
+# Running "cargo build" at the workspace root will output
+# one target directory. Note that the "crates" do not have 
+# individual target diretories
+
 [workspace]
 resolver = "2"
 
 members = [
-    "adder",
-    "add_one",
-    "add_two",
+  "adder",
+  "add_one",
+  "add_two",
 ]

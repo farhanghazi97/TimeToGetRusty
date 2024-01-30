@@ -1,11 +1,18 @@
+# This is the BINARY crate which utilises functionality
+# provided by the library crates. As such, they are listed
+# as dependancies of the exectuable.
+
+# We specify the relative path to each library crate along
+# with any other external crates
+
 [package]
+edition = "2021"
 name = "adder"
 version = "0.1.0"
-edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-add_one = { path = "../add_one" }
-add_two = { path = "../add_two" }
+add_one = {path = "../add_one"}
+add_two = {path = "../add_two"}
 rand = "0.8.5"
